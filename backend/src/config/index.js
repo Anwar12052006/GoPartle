@@ -10,7 +10,7 @@ const parseAllowedOrigins = () => {
   const list = [...defaultAllowedOrigins];
   if (process.env.FRONTEND_ORIGIN) {
     const fromEnv = process.env.FRONTEND_ORIGIN.split(",")
-      .map((item) => item.trim().replace(/\/$/, ""))
+      .map((item) => item.trim().replace(/^["']|["']$/g, "").replace(/\/$/, ""))
       .filter(Boolean);
     fromEnv.forEach((origin) => {
       if (!list.includes(origin)) {
