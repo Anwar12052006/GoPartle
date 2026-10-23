@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const config = require("./config");
 
+const { getHealth } = require("./controllers/healthController");
+
 // Route imports
 const healthRoutes = require("./routes/healthRoutes");
 const requirementRoutes = require("./routes/requirementRoutes");
@@ -22,8 +24,14 @@ app.use(
   })
 );
 
-// ── Routes ───────────────────────────────────────────────────
+// ── Health Check Endpoints (Registered before 404 catch-all) ──
+// Direct root and /api/health bindings for Render, Docker, and frontend clients
+app.get("/api/health", getHealth);
+app.get("/health", getHealth);
+app.get("/", getHealth);
 app.use("/api/health", healthRoutes);
+
+// ── Application Routes ───────────────────────────────────────
 app.use("/api/requirements", requirementRoutes);
 
 // ── Error handling (must be last) ────────────────────────────

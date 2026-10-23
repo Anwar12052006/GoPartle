@@ -78,8 +78,9 @@ async function main() {
     const res = await request("/health");
     assert(res.status === 200, `Expected 200, got ${res.status}`);
     assert(res.data.success === true, "Expected success: true");
+    assert(res.data.message === "GoPartle backend is running", `Expected message 'GoPartle backend is running', got '${res.data.message}'`);
     assert(res.data.database === "connected", `Expected database: connected, got ${res.data.database}`);
-    return `Server healthy, DB status: ${res.data.database}`;
+    return `Server healthy, message: "${res.data.message}", DB status: ${res.data.database}`;
   });
 
   // TEST 2: Valid Event Planner submission
