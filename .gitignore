@@ -1,0 +1,72 @@
+# ==============================================================================
+# GoPratle Root .gitignore
+# Covers both Frontend (Next.js) & Backend (Node.js/Express)
+# ==============================================================================
+
+# Dependencies
+node_modules/
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# Environment Variables & Secrets
+# Ignore all local environment files across all directories
+.env
+.env.*
+.env*.local
+# Explicitly allow environment template examples for repository collaborators
+!.env.example
+!.env.*.example
+!.env.local.example
+
+# Production & Build Outputs
+.next/
+out/
+dist/
+build/
+*.tsbuildinfo
+next-env.d.ts
+
+# Testing & Coverage Artifacts
+coverage/
+*.lcov
+.nyc_output/
+
+# Logs & Debugging
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Turbo & Tooling Caches
+.turbo/
+.cache/
+
+# IDE & Editor Files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+
+# Operating System Artifacts
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+[Dd]esktop.ini
+
+# Deployment Platform Artifacts
+.vercel/
