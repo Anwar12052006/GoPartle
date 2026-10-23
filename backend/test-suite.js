@@ -421,6 +421,67 @@ async function main() {
     return `Filtered ${res.data.count} items, all verified as 'Performer'`;
   });
 
+  // TEST 17: CORS Preflight on /api/health for production Vercel origin
+  await runTest("OPTIONS /api/health preflight handles Vercel origin (https://go-partle-beige.vercel.app)", async () => {
+    const response = await fetch(`${API_BASE}/health`, {
+      method: "OPTIONS",
+      headers: {
+        Origin: "https://go-partle-beige.vercel.app",
+        "Access-Control-Request-Method": "GET",
+      },
+    });
+    assert(response.status === 204, `Expected 204, got ${response.status}`);
+    const allowOrigin = response.headers.get("access-control-allow-origin");
+    assert(allowOrigin === "https://go-partle-beige.vercel.app", `Expected allow-origin https://go-partle-beige.vercel.app, got ${allowOrigin}`);
+    assert(response.headers.get("access-control-allow-credentials") === "true", "Expected credentials: true");
+    return `Preflight OK (204), Allow-Origin: ${allowOrigin}`;
+  });
+
+  // TEST 18: CORS Preflight on /api/requirements with Content-Type header
+  await runTest("OPTIONS /api/requirements preflight handles POST and Content-Type header", async () => {
+    const response = await fetch(`${API_BASE}/requirements`, {
+      method: "OPTIONS",
+      headers: {
+        Origin: "https://go-partle-beige.vercel.app",
+        "Access-Control-Request-Method": "POST",
+        "Access-Control-Request-Headers": "content-type",
+      },
+    });
+    assert(response.status === 204, `Expected 204, got ${response.status}`);
+    const allowOrigin = response.headers.get("access-control-allow-origin");
+    const allowHeaders = response.headers.get("access-control-allow-headers");
+    assert(allowOrigin === "https://go-partle-beige.vercel.app", `Expected allow-origin https://go-partle-beige.vercel.app, got ${allowOrigin}`);
+    assert(allowHeaders && allowHeaders.toLowerCase().includes("content-type"), `Expected content-type in allow-headers, got ${allowHeaders}`);
+    return `Preflight OK (204), Allow-Headers: ${allowHeaders}`;
+  });
+
+  // TEST 19: CORS GET request from local development origin (http://localhost:3000)
+  await runTest("GET /api/health allows local development origin (http://localhost:3000)", async () => {
+    const response = await fetch(`${API_BASE}/health`, {
+      method: "GET",
+      headers: {
+        Origin: "http://localhost:3000",
+      },
+    });
+    assert(response.status === 200, `Expected 200, got ${response.status}`);
+    const allowOrigin = response.headers.get("access-control-allow-origin");
+    assert(allowOrigin === "http://localhost:3000", `Expected allow-origin http://localhost:3000, got ${allowOrigin}`);
+    return `Local development OK (200), Allow-Origin: ${allowOrigin}`;
+  });
+
+  // TEST 20: CORS blocks untrusted origins without wildcard
+  await runTest("CORS omits Access-Control-Allow-Origin for unauthorized origin", async () => {
+    const response = await fetch(`${API_BASE}/health`, {
+      method: "GET",
+      headers: {
+        Origin: "https://unauthorized-domain.com",
+      },
+    });
+    const allowOrigin = response.headers.get("access-control-allow-origin");
+    assert(!allowOrigin, `Expected no allow-origin for untrusted domain, got ${allowOrigin}`);
+    return "Untrusted origin correctly denied access";
+  });
+
   console.log(`\n${colors.bold}========================================${colors.reset}`);
   console.log(`${colors.bold}TEST RUN COMPLETE: ${colors.green}${passed} PASSED${colors.reset}, ${failed === 0 ? colors.green : colors.red}${failed} FAILED${colors.reset}`);
   console.log(`${colors.bold}========================================\n${colors.reset}`);

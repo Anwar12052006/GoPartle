@@ -14,15 +14,40 @@ const errorHandler = require("./middleware/errorHandler");
 
 const app = express();
 
-// ── Global middleware ────────────────────────────────────────
+// ── CORS Configuration (Registered before all routes and parsers) ──
+const corsOptions = {
+  origin: (origin, callback) => {
+    // Allow non-browser requests (server-to-server, curl, mobile)
+    if (!origin) {
+      return callback(null, true);
+    }
+
+    const normalized = origin.replace(/\/$/, "");
+    if (config.allowedOrigins.includes(normalized)) {
+      return callback(null, true);
+    }
+
+    // Origin not allowed: omit Allow-Origin header so browser blocks cross-origin access
+    return callback(null, false);
+  },
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: [
+    "Content-Type",
+    "Authorization",
+    "Accept",
+    "X-Requested-With",
+    "Origin",
+  ],
+  optionsSuccessStatus: 204,
+  maxAge: 86400, // Cache preflight for 24h
+};
+
+app.use(cors(corsOptions));
+
+// ── Global body parsers ──────────────────────────────────────
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(
-  cors({
-    origin: config.frontendOrigin,
-    credentials: true,
-  })
-);
 
 // ── Health Check Endpoints (Registered before 404 catch-all) ──
 // Direct root and /api/health bindings for Render, Docker, and frontend clients
