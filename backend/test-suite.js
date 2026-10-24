@@ -482,6 +482,22 @@ async function main() {
     return "Untrusted origin correctly denied access";
   });
 
+  // TEST 21: CORS allows Vercel preview deployment URLs (*.vercel.app)
+  await runTest("OPTIONS & GET allow Vercel preview deployment (https://go-partle-c90721ea3-anwar-razas-projects.vercel.app)", async () => {
+    const previewOrigin = "https://go-partle-c90721ea3-anwar-razas-projects.vercel.app";
+    const response = await fetch(`${API_BASE}/health`, {
+      method: "OPTIONS",
+      headers: {
+        Origin: previewOrigin,
+        "Access-Control-Request-Method": "GET",
+      },
+    });
+    assert(response.status === 204, `Expected 204, got ${response.status}`);
+    const allowOrigin = response.headers.get("access-control-allow-origin");
+    assert(allowOrigin === previewOrigin, `Expected ${previewOrigin}, got ${allowOrigin}`);
+    return `Vercel preview deployment allowed (204), Origin: ${allowOrigin}`;
+  });
+
   console.log(`\n${colors.bold}========================================${colors.reset}`);
   console.log(`${colors.bold}TEST RUN COMPLETE: ${colors.green}${passed} PASSED${colors.reset}, ${failed === 0 ? colors.green : colors.red}${failed} FAILED${colors.reset}`);
   console.log(`${colors.bold}========================================\n${colors.reset}`);

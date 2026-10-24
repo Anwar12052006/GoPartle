@@ -15,6 +15,23 @@ const errorHandler = require("./middleware/errorHandler");
 const app = express();
 
 // ── CORS Configuration (Registered before all routes and parsers) ──
+const isOriginAllowed = (origin) => {
+  if (!origin) return true;
+  const normalized = origin.replace(/\/$/, "");
+
+  // Match explicitly allowed list or wildcard
+  if (config.allowedOrigins.includes("*") || config.allowedOrigins.includes(normalized)) {
+    return true;
+  }
+
+  // Allow all Vercel deployment, branch, and preview URLs (*.vercel.app)
+  if (/^https:\/\/([a-zA-Z0-9-]+\.)*vercel\.app$/.test(normalized)) {
+    return true;
+  }
+
+  return false;
+};
+
 const corsOptions = {
   origin: (origin, callback) => {
     // Allow non-browser requests (server-to-server, curl, mobile)
@@ -22,8 +39,7 @@ const corsOptions = {
       return callback(null, true);
     }
 
-    const normalized = origin.replace(/\/$/, "");
-    if (config.allowedOrigins.includes(normalized)) {
+    if (isOriginAllowed(origin)) {
       return callback(null, true);
     }
 

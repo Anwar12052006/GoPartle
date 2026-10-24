@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const defaultAllowedOrigins = [
+  "https://go-partle-c90721ea3-anwar-razas-projects.vercel.app",
   "https://go-partle-beige.vercel.app",
   "http://localhost:3000",
   "http://127.0.0.1:3000",
