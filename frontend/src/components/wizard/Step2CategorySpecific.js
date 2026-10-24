@@ -54,35 +54,35 @@ export default function Step2CategorySpecific({
   }
 
   return (
-    <div className="space-y-7 animate-fadeIn">
+    <div className="space-y-6 sm:space-y-7 animate-fadeIn">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 sm:gap-3">
         <div>
-          <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[14px] font-medium bg-[#FAF8F2] text-[#946B19] border border-[#E8E1D2]">
+          <span className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-[14px] font-medium bg-[#FAF8F2] text-[#946B19] border border-[#E8E1D2]">
             Step 2 of 4 · Specifications
           </span>
-          <h2 className="text-[26px] sm:text-[28px] font-bold tracking-tight text-[#242424] mt-3">
+          <h2 className="text-xl sm:text-2xl md:text-[28px] font-bold tracking-tight text-[#242424] mt-2.5 sm:mt-3">
             {category} Requirements
           </h2>
-          <p className="text-[16px] text-[#686868] mt-2 leading-relaxed">
+          <p className="text-xs sm:text-[15px] md:text-[16px] text-[#686868] mt-1.5 sm:mt-2 leading-relaxed">
             Specify the precise skills, deliverables, and role expectations for your {category.toLowerCase()}.
           </p>
         </div>
 
         {/* Category Pill Tag */}
-        <div className="self-start sm:self-auto flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#FAF8F2] border border-[#E8E1D2]">
-          {category === "Event Planner" && <IconBriefcase className="w-4 h-4 text-[#B88A2E]" />}
-          {category === "Performer" && <IconMic className="w-4 h-4 text-[#B88A2E]" />}
-          {category === "Crew" && <IconWrench className="w-4 h-4 text-[#B88A2E]" />}
-          <span className="text-xs font-bold text-[#946B19]">
+        <div className="self-start sm:self-auto flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-xl bg-[#FAF8F2] border border-[#E8E1D2] shrink-0">
+          {category === "Event Planner" && <IconBriefcase className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#B88A2E]" />}
+          {category === "Performer" && <IconMic className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#B88A2E]" />}
+          {category === "Crew" && <IconWrench className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#B88A2E]" />}
+          <span className="text-[11px] sm:text-xs font-bold text-[#946B19]">
             {category} Mode
           </span>
         </div>
       </div>
 
       {errors.categorySpecific && (
-        <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 flex items-center gap-2.5 text-rose-700 text-sm">
-          <IconAlertCircle className="w-5 h-5 flex-shrink-0" />
+        <div className="p-3.5 sm:p-4 rounded-xl bg-rose-50 border border-rose-200 flex items-center gap-2.5 text-rose-700 text-xs sm:text-sm">
+          <IconAlertCircle className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
           <span>{errors.categorySpecific}</span>
         </div>
       )}
@@ -91,16 +91,16 @@ export default function Step2CategorySpecific({
           CATEGORY: EVENT PLANNER
           ───────────────────────────────────────────────────────────── */}
       {category === "Event Planner" && (
-        <div className="space-y-6">
+        <div className="space-y-5 sm:space-y-6">
           {/* Services Needed */}
           <div>
-            <label className="block text-sm font-semibold text-[#242424] mb-2">
+            <label className="block text-xs sm:text-sm font-semibold text-[#242424] mb-1.5 sm:mb-2">
               Services Required <span className="text-rose-600">*</span>
             </label>
-            <p className="text-xs text-[#686868] mb-3">
+            <p className="text-[11px] sm:text-xs text-[#686868] mb-2.5 sm:mb-3">
               Select one or more services you expect the planner or agency to handle.
             </p>
-            <div className="flex flex-wrap gap-2.5">
+            <div className="flex flex-wrap gap-2 sm:gap-2.5">
               {[
                 "Full Turnkey Event Planning",
                 "Theme & Decor Styling",
@@ -117,7 +117,7 @@ export default function Step2CategorySpecific({
                     key={service}
                     type="button"
                     onClick={() => toggleArrayItem("plannerServices", service)}
-                    className={`px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer ${
+                    className={`px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer ${
                       isSelected
                         ? "bg-[#B88A2E] text-white shadow-xs"
                         : "bg-white border border-[#E8E1D2] text-[#242424] hover:bg-[#FAF8F2] hover:border-[#B88A2E]/50"
@@ -133,10 +133,10 @@ export default function Step2CategorySpecific({
 
           {/* Target Audience Size */}
           <div>
-            <label className="block text-sm font-semibold text-[#242424] mb-2">
+            <label className="block text-xs sm:text-sm font-semibold text-[#242424] mb-1.5 sm:mb-2">
               Expected Guest Count / Audience Size
             </label>
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 sm:gap-2.5">
               {[
                 "Intimate (<50)",
                 "Medium (50-200)",
@@ -150,7 +150,7 @@ export default function Step2CategorySpecific({
                     key={size}
                     type="button"
                     onClick={() => updateDetails({ targetAudienceSize: size })}
-                    className={`p-3 rounded-xl text-xs font-semibold border transition-all text-center cursor-pointer ${
+                    className={`p-2.5 sm:p-3 rounded-xl text-[11.5px] sm:text-xs font-semibold border transition-all text-center cursor-pointer ${
                       isSelected
                         ? "border-[#B88A2E] bg-[#FAF8F2] text-[#946B19] ring-1 ring-[#B88A2E]"
                         : "border-[#E8E1D2] bg-white text-[#242424] hover:border-[#B88A2E]/50 hover:bg-[#FAF8F2]/40"
@@ -164,11 +164,11 @@ export default function Step2CategorySpecific({
           </div>
 
           {/* Theme & Experience Level in 2 cols */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
             <div>
               <label
                 htmlFor="eventTheme"
-                className="block text-sm font-semibold text-[#242424] mb-1.5"
+                className="block text-xs sm:text-sm font-semibold text-[#242424] mb-1.5"
               >
                 Desired Event Theme / Style Vibe
               </label>
@@ -178,14 +178,14 @@ export default function Step2CategorySpecific({
                 value={details.eventTheme || ""}
                 onChange={(e) => updateDetails({ eventTheme: e.target.value })}
                 placeholder="e.g. Modern Minimalist, Futuristic Tech, Royal Traditional"
-                className="w-full h-12 px-4 rounded-xl border border-[#E8E1D2] bg-white text-[#242424] placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:border-[#B88A2E] focus:ring-[#B88A2E]/20 text-[15px]"
+                className="w-full h-11 sm:h-12 px-3.5 sm:px-4 rounded-xl border border-[#E8E1D2] bg-white text-[#242424] placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:border-[#B88A2E] focus:ring-[#B88A2E]/20 text-base sm:text-[15px]"
               />
             </div>
 
             <div>
               <label
                 htmlFor="experienceLevel"
-                className="block text-sm font-semibold text-[#242424] mb-1.5"
+                className="block text-xs sm:text-sm font-semibold text-[#242424] mb-1.5"
               >
                 Planner Experience Level
               </label>
@@ -193,7 +193,7 @@ export default function Step2CategorySpecific({
                 id="experienceLevel"
                 value={details.experienceLevel || ""}
                 onChange={(e) => updateDetails({ experienceLevel: e.target.value })}
-                className="w-full h-12 px-4 rounded-xl border border-[#E8E1D2] bg-white text-[#242424] focus:outline-none focus:ring-2 focus:border-[#B88A2E] focus:ring-[#B88A2E]/20 text-[15px] cursor-pointer"
+                className="w-full h-11 sm:h-12 px-3.5 sm:px-4 rounded-xl border border-[#E8E1D2] bg-white text-[#242424] focus:outline-none focus:ring-2 focus:border-[#B88A2E] focus:ring-[#B88A2E]/20 text-base sm:text-[15px] cursor-pointer"
               >
                 <option value="">Select experience level...</option>
                 <option value="Emerging / Boutique (<2 years)">Emerging / Boutique (&lt;2 years)</option>
@@ -207,7 +207,7 @@ export default function Step2CategorySpecific({
           <div>
             <label
               htmlFor="keyDeliverables"
-              className="block text-sm font-semibold text-[#242424] mb-1.5"
+              className="block text-xs sm:text-sm font-semibold text-[#242424] mb-1.5"
             >
               Key Deliverables & Responsibilities
             </label>
@@ -217,7 +217,7 @@ export default function Step2CategorySpecific({
               value={details.keyDeliverables || ""}
               onChange={(e) => updateDetails({ keyDeliverables: e.target.value })}
               placeholder="e.g. 3D floor plan layout, vendor contracts shortlist, day-of minute-by-minute schedule, emergency backup plan..."
-              className="w-full p-3.5 rounded-xl border border-[#E8E1D2] bg-white text-[#242424] placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:border-[#B88A2E] focus:ring-[#B88A2E]/20 text-[15px]"
+              className="w-full p-3 sm:p-3.5 rounded-xl border border-[#E8E1D2] bg-white text-[#242424] placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:border-[#B88A2E] focus:ring-[#B88A2E]/20 text-base sm:text-[15px]"
             />
           </div>
         </div>
@@ -227,13 +227,13 @@ export default function Step2CategorySpecific({
           CATEGORY: PERFORMER
           ───────────────────────────────────────────────────────────── */}
       {category === "Performer" && (
-        <div className="space-y-6">
+        <div className="space-y-5 sm:space-y-6">
           {/* Performer / Act Type */}
           <div>
-            <label className="block text-sm font-semibold text-[#242424] mb-2">
+            <label className="block text-xs sm:text-sm font-semibold text-[#242424] mb-1.5 sm:mb-2">
               Performance / Talent Type <span className="text-rose-600">*</span>
             </label>
-            <div className="flex flex-wrap gap-2.5">
+            <div className="flex flex-wrap gap-2 sm:gap-2.5">
               {[
                 "Live Band",
                 "Solo Vocalist / Singer",
@@ -250,7 +250,7 @@ export default function Step2CategorySpecific({
                     key={talent}
                     type="button"
                     onClick={() => toggleArrayItem("performerType", talent)}
-                    className={`px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer ${
+                    className={`px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer ${
                       isSelected
                         ? "bg-[#B88A2E] text-white shadow-xs"
                         : "bg-white border border-[#E8E1D2] text-[#242424] hover:bg-[#FAF8F2] hover:border-[#B88A2E]/50"
@@ -265,11 +265,11 @@ export default function Step2CategorySpecific({
           </div>
 
           {/* Genre / Style & Duration in 2 cols */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
             <div>
               <label
                 htmlFor="genreStyle"
-                className="block text-sm font-semibold text-[#242424] mb-1.5"
+                className="block text-xs sm:text-sm font-semibold text-[#242424] mb-1.5"
               >
                 Music Genre / Performance Style
               </label>
@@ -279,14 +279,14 @@ export default function Step2CategorySpecific({
                 value={details.genreStyle || ""}
                 onChange={(e) => updateDetails({ genreStyle: e.target.value })}
                 placeholder="e.g. Bollywood Pop, Indie Rock, Deep House, Clean Corporate Comedy"
-                className="w-full h-12 px-4 rounded-xl border border-[#E8E1D2] bg-white text-[#242424] placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:border-[#B88A2E] focus:ring-[#B88A2E]/20 text-[15px]"
+                className="w-full h-11 sm:h-12 px-3.5 sm:px-4 rounded-xl border border-[#E8E1D2] bg-white text-[#242424] placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:border-[#B88A2E] focus:ring-[#B88A2E]/20 text-base sm:text-[15px]"
               />
             </div>
 
             <div>
               <label
                 htmlFor="performanceDuration"
-                className="block text-sm font-semibold text-[#242424] mb-1.5"
+                className="block text-xs sm:text-sm font-semibold text-[#242424] mb-1.5"
               >
                 Performance Slot / Duration
               </label>
@@ -294,7 +294,7 @@ export default function Step2CategorySpecific({
                 id="performanceDuration"
                 value={details.performanceDuration || ""}
                 onChange={(e) => updateDetails({ performanceDuration: e.target.value })}
-                className="w-full h-12 px-4 rounded-xl border border-[#E8E1D2] bg-white text-[#242424] focus:outline-none focus:ring-2 focus:border-[#B88A2E] focus:ring-[#B88A2E]/20 text-[15px] cursor-pointer"
+                className="w-full h-11 sm:h-12 px-3.5 sm:px-4 rounded-xl border border-[#E8E1D2] bg-white text-[#242424] focus:outline-none focus:ring-2 focus:border-[#B88A2E] focus:ring-[#B88A2E]/20 text-base sm:text-[15px] cursor-pointer"
               >
                 <option value="">Select duration...</option>
                 <option value="30 - 45 Minutes (Short set)">30 - 45 Minutes (Short set)</option>
@@ -308,10 +308,10 @@ export default function Step2CategorySpecific({
 
           {/* Languages */}
           <div>
-            <label className="block text-sm font-semibold text-[#242424] mb-2">
+            <label className="block text-xs sm:text-sm font-semibold text-[#242424] mb-1.5 sm:mb-2">
               Performance Language(s)
             </label>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
               {[
                 "English",
                 "Hindi",
@@ -329,7 +329,7 @@ export default function Step2CategorySpecific({
                     key={lang}
                     type="button"
                     onClick={() => toggleArrayItem("languages", lang)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                    className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                       isSelected
                         ? "bg-[#B88A2E] text-white"
                         : "bg-[#FAF8F2] border border-[#E8E1D2] text-[#686868] hover:bg-white"
@@ -346,7 +346,7 @@ export default function Step2CategorySpecific({
           <div>
             <label
               htmlFor="stageSetupRider"
-              className="block text-sm font-semibold text-[#242424] mb-1.5"
+              className="block text-xs sm:text-sm font-semibold text-[#242424] mb-1.5"
             >
               Stage Setup / Technical Rider Requirements
             </label>
@@ -356,7 +356,7 @@ export default function Step2CategorySpecific({
               value={details.stageSetupRider || ""}
               onChange={(e) => updateDetails({ stageSetupRider: e.target.value })}
               placeholder="e.g. 2 Wireless Shure SM58 mics, in-ear monitor transmitters, Pioneer DJM-900 mixer, 1 monitor wedge, water and clean towels on stage..."
-              className="w-full p-3.5 rounded-xl border border-[#E8E1D2] bg-white text-[#242424] placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:border-[#B88A2E] focus:ring-[#B88A2E]/20 text-[15px]"
+              className="w-full p-3 sm:p-3.5 rounded-xl border border-[#E8E1D2] bg-white text-[#242424] placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:border-[#B88A2E] focus:ring-[#B88A2E]/20 text-base sm:text-[15px]"
             />
           </div>
         </div>
@@ -366,16 +366,16 @@ export default function Step2CategorySpecific({
           CATEGORY: CREW
           ───────────────────────────────────────────────────────────── */}
       {category === "Crew" && (
-        <div className="space-y-6">
+        <div className="space-y-5 sm:space-y-6">
           {/* Crew Roles */}
           <div>
-            <label className="block text-sm font-semibold text-[#242424] mb-2">
+            <label className="block text-xs sm:text-sm font-semibold text-[#242424] mb-1.5 sm:mb-2">
               Crew Role(s) Desired <span className="text-rose-600">*</span>
             </label>
-            <p className="text-xs text-[#686868] mb-3">
+            <p className="text-[11px] sm:text-xs text-[#686868] mb-2 sm:mb-3">
               Select the positions you need staffed for your production.
             </p>
-            <div className="flex flex-wrap gap-2.5">
+            <div className="flex flex-wrap gap-2 sm:gap-2.5">
               {[
                 "Live Sound & Audio Engineer",
                 "Lighting Console Operator (DMX)",
@@ -393,7 +393,7 @@ export default function Step2CategorySpecific({
                     key={role}
                     type="button"
                     onClick={() => toggleArrayItem("crewRoles", role)}
-                    className={`px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer ${
+                    className={`px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer ${
                       isSelected
                         ? "bg-[#B88A2E] text-white shadow-xs"
                         : "bg-white border border-[#E8E1D2] text-[#242424] hover:bg-[#FAF8F2] hover:border-[#B88A2E]/50"
@@ -408,11 +408,11 @@ export default function Step2CategorySpecific({
           </div>
 
           {/* Shift Duration & Uniform in 2 cols */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
             <div>
               <label
                 htmlFor="shiftDuration"
-                className="block text-sm font-semibold text-[#242424] mb-1.5"
+                className="block text-xs sm:text-sm font-semibold text-[#242424] mb-1.5"
               >
                 Shift Duration & Schedule
               </label>
@@ -420,7 +420,7 @@ export default function Step2CategorySpecific({
                 id="shiftDuration"
                 value={details.shiftDuration || ""}
                 onChange={(e) => updateDetails({ shiftDuration: e.target.value })}
-                className="w-full h-12 px-4 rounded-xl border border-[#E8E1D2] bg-white text-[#242424] focus:outline-none focus:ring-2 focus:border-[#B88A2E] focus:ring-[#B88A2E]/20 text-[15px] cursor-pointer"
+                className="w-full h-11 sm:h-12 px-3.5 sm:px-4 rounded-xl border border-[#E8E1D2] bg-white text-[#242424] focus:outline-none focus:ring-2 focus:border-[#B88A2E] focus:ring-[#B88A2E]/20 text-base sm:text-[15px] cursor-pointer"
               >
                 <option value="">Select shift schedule...</option>
                 <option value="Half Day (4-5 Hours)">Half Day (4-5 Hours)</option>
@@ -434,7 +434,7 @@ export default function Step2CategorySpecific({
             <div>
               <label
                 htmlFor="dressCode"
-                className="block text-sm font-semibold text-[#242424] mb-1.5"
+                className="block text-xs sm:text-sm font-semibold text-[#242424] mb-1.5"
               >
                 Uniform / Dress Code
               </label>
@@ -442,7 +442,7 @@ export default function Step2CategorySpecific({
                 id="dressCode"
                 value={details.dressCode || ""}
                 onChange={(e) => updateDetails({ dressCode: e.target.value })}
-                className="w-full h-12 px-4 rounded-xl border border-[#E8E1D2] bg-white text-[#242424] focus:outline-none focus:ring-2 focus:border-[#B88A2E] focus:ring-[#B88A2E]/20 text-[15px] cursor-pointer"
+                className="w-full h-11 sm:h-12 px-3.5 sm:px-4 rounded-xl border border-[#E8E1D2] bg-white text-[#242424] focus:outline-none focus:ring-2 focus:border-[#B88A2E] focus:ring-[#B88A2E]/20 text-base sm:text-[15px] cursor-pointer"
               >
                 <option value="">Select dress code...</option>
                 <option value="Production All-Black (T-shirt/Polo & cargo)">Production All-Black (T-shirt/Polo & cargo)</option>
@@ -457,7 +457,7 @@ export default function Step2CategorySpecific({
           <div>
             <label
               htmlFor="physicalOrTechnicalSkills"
-              className="block text-sm font-semibold text-[#242424] mb-1.5"
+              className="block text-xs sm:text-sm font-semibold text-[#242424] mb-1.5"
             >
               Required Skills / Certifications / Equipment Knowledge
             </label>
@@ -467,7 +467,7 @@ export default function Step2CategorySpecific({
               value={details.physicalOrTechnicalSkills || ""}
               onChange={(e) => updateDetails({ physicalOrTechnicalSkills: e.target.value })}
               placeholder="e.g. Must know Yamaha TF/QL consoles, GrandMA2 lighting board, rigging safety certification, capable of lifting flight cases..."
-              className="w-full p-3.5 rounded-xl border border-[#E8E1D2] bg-white text-[#242424] placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:border-[#B88A2E] focus:ring-[#B88A2E]/20 text-[15px]"
+              className="w-full p-3 sm:p-3.5 rounded-xl border border-[#E8E1D2] bg-white text-[#242424] placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:border-[#B88A2E] focus:ring-[#B88A2E]/20 text-base sm:text-[15px]"
             />
           </div>
         </div>

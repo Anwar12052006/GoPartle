@@ -61,27 +61,27 @@ export default function Step1EventInfo({ formData, updateFormData, errors, clear
   };
 
   return (
-    <div className="space-y-8 animate-fadeIn">
+    <div className="space-y-6 sm:space-y-8 animate-fadeIn">
       {/* Header */}
       <div>
-        <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[14px] font-medium bg-[#FAF8F2] text-[#946B19] border border-[#E8E1D2]">
+        <span className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-[14px] font-medium bg-[#FAF8F2] text-[#946B19] border border-[#E8E1D2]">
           Step 1 of 4 · General Overview
         </span>
-        <h2 className="text-[26px] sm:text-[28px] font-bold tracking-tight text-[#242424] mt-3">
+        <h2 className="text-xl sm:text-2xl md:text-[28px] font-bold tracking-tight text-[#242424] mt-2.5 sm:mt-3">
           Event Details & Category Selection
         </h2>
-        <p className="text-[16px] text-[#686868] mt-2 leading-relaxed">
+        <p className="text-xs sm:text-[15px] md:text-[16px] text-[#686868] mt-1.5 sm:mt-2 leading-relaxed">
           Tell us about your upcoming event and choose the specialization you want to hire.
         </p>
       </div>
 
       {/* Main Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         {/* Event Name */}
         <div className="md:col-span-2">
           <label
             htmlFor="eventName"
-            className="block text-[16px] font-semibold text-[#242424] mb-2"
+            className="block text-sm sm:text-[16px] font-semibold text-[#242424] mb-1.5 sm:mb-2"
           >
             Event Name <span className="text-rose-600">*</span>
           </label>
@@ -92,7 +92,7 @@ export default function Step1EventInfo({ formData, updateFormData, errors, clear
             value={formData.eventName || ""}
             onChange={(e) => handleChange("eventName", e.target.value)}
             placeholder="e.g. InnovateTech Global Summit 2026"
-            className={`w-full h-[52px] px-4 rounded-xl border bg-white text-[#242424] placeholder:text-[15px] placeholder:text-[#888888] focus:outline-none focus:ring-2 transition-all text-[16px] ${
+            className={`w-full h-11 sm:h-[52px] px-3.5 sm:px-4 rounded-xl border bg-white text-[#242424] placeholder:text-sm sm:placeholder:text-[15px] placeholder:text-[#888888] focus:outline-none focus:ring-2 transition-all text-base ${
               errors.eventName
                 ? "border-rose-400 focus:ring-rose-400/20"
                 : "border-[#E8E1D2] focus:border-[#B88A2E] focus:ring-[#B88A2E]/20"
@@ -112,7 +112,7 @@ export default function Step1EventInfo({ formData, updateFormData, errors, clear
         <div>
           <label
             htmlFor="eventType"
-            className="block text-[16px] font-semibold text-[#242424] mb-2"
+            className="block text-sm sm:text-base font-semibold text-[#242424] mb-1.5 sm:mb-2"
           >
             Event Type <span className="text-rose-600">*</span>
           </label>
@@ -122,7 +122,7 @@ export default function Step1EventInfo({ formData, updateFormData, errors, clear
               name="eventType"
               value={formData.eventType || ""}
               onChange={(e) => handleChange("eventType", e.target.value)}
-              className={`w-full h-[52px] appearance-none px-4 rounded-xl border bg-white text-[#242424] focus:outline-none focus:ring-2 transition-all cursor-pointer text-[16px] ${
+              className={`w-full h-11 sm:h-[52px] appearance-none px-3.5 sm:px-4 rounded-xl border bg-white text-[#242424] focus:outline-none focus:ring-2 transition-all cursor-pointer text-base ${
                 errors.eventType
                   ? "border-rose-400 focus:ring-rose-400/20"
                   : "border-[#E8E1D2] focus:border-[#B88A2E] focus:ring-[#B88A2E]/20"
@@ -144,7 +144,7 @@ export default function Step1EventInfo({ formData, updateFormData, errors, clear
             </div>
           </div>
           {errors.eventType && (
-            <p id="eventType-error" className="mt-2 text-xs font-medium text-rose-600 flex items-center gap-1">
+            <p id="eventType-error" className="mt-1.5 text-xs font-medium text-rose-600 flex items-center gap-1">
               <IconAlertCircle className="w-3.5 h-3.5" />
               {errors.eventType}
             </p>
@@ -155,7 +155,7 @@ export default function Step1EventInfo({ formData, updateFormData, errors, clear
         <div>
           <label
             htmlFor="location"
-            className="block text-[16px] font-semibold text-[#242424] mb-2"
+            className="block text-sm sm:text-base font-semibold text-[#242424] mb-1.5 sm:mb-2"
           >
             Location (City / State) <span className="text-rose-600">*</span>
           </label>
@@ -167,7 +167,7 @@ export default function Step1EventInfo({ formData, updateFormData, errors, clear
               value={formData.location || ""}
               onChange={(e) => handleChange("location", e.target.value)}
               placeholder="e.g. Bengaluru, Karnataka"
-              className={`w-full h-[52px] pl-11 pr-4 rounded-xl border bg-white text-[#242424] placeholder:text-[15px] placeholder:text-[#888888] focus:outline-none focus:ring-2 transition-all text-[16px] ${
+              className={`w-full h-11 sm:h-[52px] pl-10 sm:pl-11 pr-3.5 sm:pr-4 rounded-xl border bg-white text-[#242424] placeholder:text-sm sm:placeholder:text-[15px] placeholder:text-[#888888] focus:outline-none focus:ring-2 transition-all text-base ${
                 errors.location
                   ? "border-rose-400 focus:ring-rose-400/20"
                   : "border-[#E8E1D2] focus:border-[#B88A2E] focus:ring-[#B88A2E]/20"
@@ -175,12 +175,12 @@ export default function Step1EventInfo({ formData, updateFormData, errors, clear
               aria-invalid={!!errors.location}
               aria-describedby={errors.location ? "location-error" : undefined}
             />
-            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-[#686868]">
+            <div className="absolute inset-y-0 left-0 pl-3.5 sm:pl-4 flex items-center pointer-events-none text-[#686868]">
               <IconMapPin className="w-4 h-4 text-[#B88A2E]" />
             </div>
           </div>
           {errors.location && (
-            <p id="location-error" className="mt-2 text-xs font-medium text-rose-600 flex items-center gap-1">
+            <p id="location-error" className="mt-1.5 text-xs font-medium text-rose-600 flex items-center gap-1">
               <IconAlertCircle className="w-3.5 h-3.5" />
               {errors.location}
             </p>
@@ -191,7 +191,7 @@ export default function Step1EventInfo({ formData, updateFormData, errors, clear
         <div>
           <label
             htmlFor="startDate"
-            className="block text-[16px] font-semibold text-[#242424] mb-2"
+            className="block text-sm sm:text-base font-semibold text-[#242424] mb-1.5 sm:mb-2"
           >
             Start Date <span className="text-rose-600">*</span>
           </label>
@@ -202,7 +202,7 @@ export default function Step1EventInfo({ formData, updateFormData, errors, clear
               type="date"
               value={formData.startDate || ""}
               onChange={(e) => handleChange("startDate", e.target.value)}
-              className={`w-full h-[52px] pl-11 pr-4 rounded-xl border bg-white text-[#242424] focus:outline-none focus:ring-2 transition-all text-[16px] ${
+              className={`w-full h-11 sm:h-[52px] pl-10 sm:pl-11 pr-3.5 sm:pr-4 rounded-xl border bg-white text-[#242424] focus:outline-none focus:ring-2 transition-all text-base ${
                 errors.startDate
                   ? "border-rose-400 focus:ring-rose-400/20"
                   : "border-[#E8E1D2] focus:border-[#B88A2E] focus:ring-[#B88A2E]/20"
@@ -210,12 +210,12 @@ export default function Step1EventInfo({ formData, updateFormData, errors, clear
               aria-invalid={!!errors.startDate}
               aria-describedby={errors.startDate ? "startDate-error" : undefined}
             />
-            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-[#686868]">
+            <div className="absolute inset-y-0 left-0 pl-3.5 sm:pl-4 flex items-center pointer-events-none text-[#686868]">
               <IconCalendar className="w-4 h-4 text-[#B88A2E]" />
             </div>
           </div>
           {errors.startDate && (
-            <p id="startDate-error" className="mt-2 text-xs font-medium text-rose-600 flex items-center gap-1">
+            <p id="startDate-error" className="mt-1.5 text-xs font-medium text-rose-600 flex items-center gap-1">
               <IconAlertCircle className="w-3.5 h-3.5" />
               {errors.startDate}
             </p>
@@ -226,7 +226,7 @@ export default function Step1EventInfo({ formData, updateFormData, errors, clear
         <div>
           <label
             htmlFor="endDate"
-            className="block text-[16px] font-semibold text-[#242424] mb-2"
+            className="block text-sm sm:text-base font-semibold text-[#242424] mb-1.5 sm:mb-2"
           >
             End Date <span className="text-rose-600">*</span>
           </label>
@@ -238,7 +238,7 @@ export default function Step1EventInfo({ formData, updateFormData, errors, clear
               min={formData.startDate || undefined}
               value={formData.endDate || ""}
               onChange={(e) => handleChange("endDate", e.target.value)}
-              className={`w-full h-[52px] pl-11 pr-4 rounded-xl border bg-white text-[#242424] focus:outline-none focus:ring-2 transition-all text-[16px] ${
+              className={`w-full h-11 sm:h-[52px] pl-10 sm:pl-11 pr-3.5 sm:pr-4 rounded-xl border bg-white text-[#242424] focus:outline-none focus:ring-2 transition-all text-base ${
                 errors.endDate
                   ? "border-rose-400 focus:ring-rose-400/20"
                   : "border-[#E8E1D2] focus:border-[#B88A2E] focus:ring-[#B88A2E]/20"
@@ -246,12 +246,12 @@ export default function Step1EventInfo({ formData, updateFormData, errors, clear
               aria-invalid={!!errors.endDate}
               aria-describedby={errors.endDate ? "endDate-error" : undefined}
             />
-            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-[#686868]">
+            <div className="absolute inset-y-0 left-0 pl-3.5 sm:pl-4 flex items-center pointer-events-none text-[#686868]">
               <IconCalendar className="w-4 h-4 text-[#B88A2E]" />
             </div>
           </div>
           {errors.endDate && (
-            <p id="endDate-error" className="mt-2 text-xs font-medium text-rose-600 flex items-center gap-1">
+            <p id="endDate-error" className="mt-1.5 text-xs font-medium text-rose-600 flex items-center gap-1">
               <IconAlertCircle className="w-3.5 h-3.5" />
               {errors.endDate}
             </p>
@@ -260,14 +260,14 @@ export default function Step1EventInfo({ formData, updateFormData, errors, clear
 
         {/* Optional Venue */}
         <div className="md:col-span-2">
-          <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center justify-between mb-1.5 sm:mb-2">
             <label
               htmlFor="venue"
-              className="block text-[16px] font-semibold text-[#242424]"
+              className="block text-sm sm:text-base font-semibold text-[#242424]"
             >
               Venue / Address
             </label>
-            <span className="text-[14px] text-[#686868] font-medium">Optional</span>
+            <span className="text-xs sm:text-sm text-[#686868] font-medium">Optional</span>
           </div>
           <div className="relative">
             <input
@@ -277,9 +277,9 @@ export default function Step1EventInfo({ formData, updateFormData, errors, clear
               value={formData.venue || ""}
               onChange={(e) => handleChange("venue", e.target.value)}
               placeholder="e.g. Palace Grounds, Main Convention Hall (or leave empty if to be finalized)"
-              className="w-full h-[52px] pl-11 pr-4 rounded-xl border border-[#E8E1D2] bg-white text-[#242424] placeholder:text-[15px] placeholder:text-[#888888] focus:outline-none focus:ring-2 focus:border-[#B88A2E] focus:ring-[#B88A2E]/20 transition-all text-[16px]"
+              className="w-full h-11 sm:h-[52px] pl-10 sm:pl-11 pr-3.5 sm:pr-4 rounded-xl border border-[#E8E1D2] bg-white text-[#242424] placeholder:text-sm sm:placeholder:text-[15px] placeholder:text-[#888888] focus:outline-none focus:ring-2 focus:border-[#B88A2E] focus:ring-[#B88A2E]/20 transition-all text-base"
             />
-            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-[#686868]">
+            <div className="absolute inset-y-0 left-0 pl-3.5 sm:pl-4 flex items-center pointer-events-none text-[#686868]">
               <IconBuilding className="w-4 h-4 text-[#B88A2E]" />
             </div>
           </div>
@@ -287,29 +287,29 @@ export default function Step1EventInfo({ formData, updateFormData, errors, clear
       </div>
 
       {/* Category Selection Section */}
-      <fieldset className="pt-6 border-t border-[#E8E1D2]">
-        <div className="flex items-center justify-between mb-2">
-          <legend className="text-[18.5px] sm:text-[19px] font-semibold text-[#242424]">
+      <fieldset className="pt-5 sm:pt-6 border-t border-[#E8E1D2]">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 mb-2">
+          <legend className="text-base sm:text-lg md:text-[19px] font-semibold text-[#242424]">
             Requirement Category <span className="text-rose-600">*</span>
           </legend>
           {formData.category && (
-            <span className="text-[12.5px] font-semibold px-3 py-1 rounded-full bg-[#FAF8F2] text-[#946B19] border border-[#E8E1D2]">
+            <span className="self-start sm:self-auto text-xs font-semibold px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-[#FAF8F2] text-[#946B19] border border-[#E8E1D2]">
               Active: {formData.category}
             </span>
           )}
         </div>
-        <p className="text-[15.5px] sm:text-[16px] text-[#686868] mb-5 leading-relaxed">
+        <p className="text-xs sm:text-[15px] md:text-[16px] text-[#686868] mb-4 sm:mb-5 leading-relaxed">
           Select who you are hiring. Steps 2 & 3 will automatically configure to show the relevant specifications.
         </p>
 
         {errors.category && (
-          <div className="mb-4 p-3 rounded-xl bg-rose-50 border border-rose-200 flex items-center gap-2 text-rose-700 text-sm">
-            <IconAlertCircle className="w-4 h-4 flex-shrink-0" />
+          <div className="mb-4 p-3 rounded-xl bg-rose-50 border border-rose-200 flex items-center gap-2 text-rose-700 text-xs sm:text-sm">
+            <IconAlertCircle className="w-4 h-4 shrink-0" />
             <span>{errors.category}</span>
           </div>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4">
           {CATEGORIES.map((cat) => {
             const isSelected = formData.category === cat.id;
             const CatIcon = cat.icon;
@@ -317,7 +317,7 @@ export default function Step1EventInfo({ formData, updateFormData, errors, clear
             return (
               <label
                 key={cat.id}
-                className={`relative flex flex-col p-5 rounded-2xl border transition-all duration-150 cursor-pointer ${
+                className={`relative flex flex-col p-4 sm:p-5 rounded-xl sm:rounded-2xl border transition-all duration-150 cursor-pointer ${
                   isSelected
                     ? "border-[#B88A2E] bg-[#FAF8F2] ring-1 ring-[#B88A2E] shadow-xs"
                     : "border-[#E8E1D2] bg-white hover:border-[#B88A2E]/50 hover:bg-[#FAF8F2]/40"
@@ -332,15 +332,15 @@ export default function Step1EventInfo({ formData, updateFormData, errors, clear
                   className="sr-only"
                 />
 
-                <div className="flex items-center justify-between mb-3.5">
+                <div className="flex items-center justify-between mb-3 sm:mb-3.5">
                   <div
-                    className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${
+                    className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center transition-all ${
                       isSelected
                         ? "bg-[#B88A2E] text-white shadow-xs"
                         : "bg-[#FAF8F2] text-[#686868] border border-[#E8E1D2]"
                     }`}
                   >
-                    <CatIcon className="w-5 h-5" />
+                    <CatIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
 
                   <div
@@ -355,13 +355,13 @@ export default function Step1EventInfo({ formData, updateFormData, errors, clear
                 </div>
 
                 <div className="flex-1">
-                  <span className="text-[13px] sm:text-[13.5px] font-semibold tracking-wider text-[#946B19] uppercase">
+                  <span className="text-[11.5px] sm:text-[13px] font-semibold tracking-wider text-[#946B19] uppercase">
                     {cat.badge}
                   </span>
-                  <h3 className="text-[17.5px] sm:text-[18px] font-semibold text-[#242424] mt-1 leading-snug">
+                  <h3 className="text-base sm:text-[17.5px] md:text-[18px] font-semibold text-[#242424] mt-0.5 sm:mt-1 leading-snug">
                     {cat.title}
                   </h3>
-                  <p className="text-[14px] sm:text-[14.5px] text-[#686868] mt-2 leading-relaxed">
+                  <p className="text-xs sm:text-[14px] text-[#686868] mt-1.5 sm:mt-2 leading-relaxed">
                     {cat.desc}
                   </p>
                 </div>

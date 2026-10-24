@@ -20,22 +20,22 @@ export default function Home() {
     <div className="min-h-screen flex flex-col bg-[#FAF8F2] text-[#242424] selection:bg-[#F5EBD3] selection:text-[#946B19]">
       {/* ── Top Header Navigation ─────────────────────────────────── */}
       <header className="sticky top-0 z-40 w-full bg-white border-b border-[#E8E1D2] shadow-xs">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 h-18 flex items-center justify-between">
+        <div className="max-w-5xl mx-auto px-3 sm:px-6 min-h-[64px] sm:h-18 py-2.5 sm:py-0 flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-4">
           {/* Logo & Brand */}
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#B88A2E] to-[#946B19] flex items-center justify-center text-white shadow-xs font-bold text-base tracking-tight">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-[#B88A2E] to-[#946B19] flex items-center justify-center text-white shadow-xs font-bold text-sm sm:text-base tracking-tight shrink-0">
               GP
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <span className="font-bold text-[21px] tracking-tight text-[#242424]">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className="font-bold text-lg sm:text-[21px] tracking-tight text-[#242424]">
                   GoPratle
                 </span>
-                <span className="text-[12px] uppercase font-semibold tracking-wider px-2 py-0.5 rounded-md bg-[#FAF8F2] text-[#946B19] border border-[#E8E1D2]">
+                <span className="text-[10.5px] sm:text-[12px] uppercase font-semibold tracking-wider px-1.5 sm:px-2 py-0.5 rounded-md bg-[#FAF8F2] text-[#946B19] border border-[#E8E1D2]">
                   Event Hub
                 </span>
               </div>
-              <p className="text-[13.5px] text-[#686868] hidden sm:block">
+              <p className="text-xs sm:text-[13.5px] text-[#686868] hidden sm:block">
                 Talent & Requirement Marketplace
               </p>
             </div>
@@ -44,12 +44,12 @@ export default function Home() {
           {/* Center Tabs: Wizard vs List */}
           <nav
             aria-label="Main Navigation"
-            className="flex items-center p-1 rounded-xl bg-[#FAF8F2] border border-[#E8E1D2]"
+            className="flex items-center p-1 rounded-xl bg-[#FAF8F2] border border-[#E8E1D2] w-full sm:w-auto justify-center"
           >
             <button
               type="button"
               onClick={() => setActiveTab("wizard")}
-              className={`px-4 py-2 rounded-lg text-[15px] font-semibold transition-all cursor-pointer ${
+              className={`flex-1 sm:flex-initial px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-[14.5px] md:text-[15px] font-semibold transition-all cursor-pointer text-center ${
                 activeTab === "wizard"
                   ? "bg-white text-[#946B19] shadow-xs border border-[#E8E1D2]"
                   : "text-[#686868] hover:text-[#242424] hover:bg-white/60"
@@ -60,7 +60,7 @@ export default function Home() {
             <button
               type="button"
               onClick={() => setActiveTab("list")}
-              className={`px-4 py-2 rounded-lg text-[15px] font-semibold transition-all cursor-pointer ${
+              className={`flex-1 sm:flex-initial px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-[14.5px] md:text-[15px] font-semibold transition-all cursor-pointer text-center ${
                 activeTab === "list"
                   ? "bg-white text-[#946B19] shadow-xs border border-[#E8E1D2]"
                   : "text-[#686868] hover:text-[#242424] hover:bg-white/60"
@@ -73,16 +73,16 @@ export default function Home() {
       </header>
 
       {/* ── Main Content Area ─────────────────────────────────────── */}
-      <main className="flex-1 py-10 sm:py-14 px-4 sm:px-6">
-        <div className="w-full max-w-[980px] mx-auto space-y-8">
+      <main className="flex-1 py-6 sm:py-10 md:py-14 px-3 sm:px-6">
+        <div className="w-full max-w-[980px] mx-auto space-y-6 sm:space-y-8">
           {activeTab === "wizard" ? (
             <>
               {/* Wizard Intro Heading */}
-              <div className="text-center max-w-2xl mx-auto space-y-3">
-                <h1 className="text-[32px] sm:text-[42px] font-bold tracking-tight text-[#242424] leading-tight">
+              <div className="text-center max-w-2xl mx-auto space-y-2 sm:space-y-3 px-1">
+                <h1 className="text-2xl sm:text-3xl md:text-[40px] lg:text-[42px] font-bold tracking-tight text-[#242424] leading-tight">
                   Post an Event Requirement
                 </h1>
-                <p className="text-[15.5px] sm:text-[16px] text-[#686868] leading-relaxed">
+                <p className="text-xs sm:text-[15px] md:text-[16px] text-[#686868] leading-relaxed">
                   Connect with verified event planners, artists, performers, and technical production crew in 4 simple steps.
                 </p>
               </div>

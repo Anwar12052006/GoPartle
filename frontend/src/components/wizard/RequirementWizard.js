@@ -264,7 +264,7 @@ export default function RequirementWizard({ onRequirementPosted, onViewList }) {
       />
 
       {/* Main Step Container Form */}
-      <div className="bg-white border border-[#E8E1D2] rounded-2xl p-7 sm:p-10 shadow-xs">
+      <div className="bg-white border border-[#E8E1D2] rounded-2xl p-4 sm:p-7 md:p-9 lg:p-10 shadow-xs">
         {/* Step Views */}
         <div>
           {currentStep === 1 && (
@@ -310,24 +310,24 @@ export default function RequirementWizard({ onRequirementPosted, onViewList }) {
 
         {/* Navigation Action Buttons for Steps 1, 2, 3 */}
         {currentStep < 4 && (
-          <div className="mt-8 pt-6 border-t border-[#E8E1D2] flex items-center justify-between">
+          <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-[#E8E1D2] flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3">
             {currentStep > 1 ? (
               <button
                 type="button"
                 onClick={handleBack}
-                className="px-5 py-2.5 rounded-xl border border-[#E8E1D2] bg-white hover:bg-[#FAF8F2] text-[#242424] font-semibold text-sm transition-colors flex items-center gap-2 cursor-pointer"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-[#E8E1D2] bg-white hover:bg-[#FAF8F2] text-[#242424] font-semibold text-sm transition-colors flex items-center justify-center gap-2 cursor-pointer"
               >
                 <IconChevronLeft className="w-4 h-4 text-[#686868]" />
                 Previous Step
               </button>
             ) : (
-              <div />
+              <div className="hidden sm:block" />
             )}
 
             <button
               type="button"
               onClick={handleNext}
-              className="px-6 py-2.5 rounded-xl bg-[#B88A2E] hover:bg-[#946B19] text-white font-semibold text-sm shadow-xs transition-colors flex items-center gap-2 cursor-pointer"
+              className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-[#B88A2E] hover:bg-[#946B19] text-white font-semibold text-sm shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer"
             >
               Continue to Step {currentStep + 1}
               <IconChevronRight className="w-4 h-4" />

@@ -16,6 +16,12 @@ export const metadata = {
   description: "Post and manage project requirements with GoPratle",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export default function RootLayout({ children }) {
   return (
     <html

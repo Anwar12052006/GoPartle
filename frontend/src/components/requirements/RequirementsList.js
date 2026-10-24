@@ -46,26 +46,26 @@ export default function RequirementsList({ onNewPostingClick }) {
   return (
     <div className="w-full max-w-5xl mx-auto space-y-6 animate-fadeIn">
       {/* Top Banner / Filter Controls */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white border border-[#E8E1D2] rounded-2xl p-5 shadow-xs">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-white border border-[#E8E1D2] rounded-xl sm:rounded-2xl p-4 sm:p-5 shadow-xs">
         <div>
-          <h2 className="text-[22px] sm:text-[24px] font-bold text-[#242424] flex items-center gap-2.5">
-            <IconSparkles className="w-5 h-5 text-[#B88A2E]" />
+          <h2 className="text-xl sm:text-[22px] md:text-[24px] font-bold text-[#242424] flex items-center gap-2 sm:gap-2.5">
+            <IconSparkles className="w-4 h-4 sm:w-5 sm:h-5 text-[#B88A2E] shrink-0" />
             Live Event Requirements
           </h2>
-          <p className="text-[14px] sm:text-[14.5px] text-[#686868] mt-1">
+          <p className="text-xs sm:text-[14px] text-[#686868] mt-1">
             Real-time requirements fetched directly from the GoPratle backend & database.
           </p>
         </div>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
           {/* Category Tabs */}
-          <div className="flex items-center bg-[#FAF8F2] border border-[#E8E1D2] p-1 rounded-xl">
+          <div className="flex items-center bg-[#FAF8F2] border border-[#E8E1D2] p-1 rounded-xl overflow-x-auto max-w-full">
             {["All", "Event Planner", "Performer", "Crew"].map((cat) => (
               <button
                 key={cat}
                 type="button"
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-3 sm:px-3.5 py-1.5 rounded-lg text-[14px] sm:text-[14.5px] transition-all cursor-pointer ${
+                className={`px-2.5 sm:px-3.5 py-1.5 rounded-lg text-xs sm:text-[14px] transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   selectedCategory === cat
                     ? "bg-white text-[#946B19] shadow-xs border border-[#E8E1D2] font-semibold"
                     : "text-[#686868] hover:text-[#242424] hover:bg-white/60 font-medium"
@@ -79,7 +79,7 @@ export default function RequirementsList({ onNewPostingClick }) {
           <button
             type="button"
             onClick={onNewPostingClick}
-            className="px-4 sm:px-4.5 py-2 rounded-xl bg-[#B88A2E] hover:bg-[#946B19] text-white font-semibold text-[14px] sm:text-[14.5px] shadow-xs transition-colors cursor-pointer"
+            className="w-full sm:w-auto px-4 sm:px-4.5 py-2 sm:py-2 rounded-xl bg-[#B88A2E] hover:bg-[#946B19] text-white font-semibold text-xs sm:text-[14px] shadow-xs transition-colors cursor-pointer text-center whitespace-nowrap shrink-0"
           >
             + Post Requirement
           </button>
@@ -162,45 +162,45 @@ export default function RequirementsList({ onNewPostingClick }) {
             return (
               <div
                 key={req._id}
-                className="rounded-2xl border border-[#E8E1D2] bg-white p-5 shadow-xs hover:border-[#B88A2E]/50 transition-colors flex flex-col justify-between space-y-4"
+                className="rounded-xl sm:rounded-2xl border border-[#E8E1D2] bg-white p-4 sm:p-5 shadow-xs hover:border-[#B88A2E]/50 transition-colors flex flex-col justify-between space-y-3.5 sm:space-y-4"
               >
-                <div className="space-y-2.5">
-                  <div className="flex items-center justify-between">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[12.5px] sm:text-[13px] font-semibold uppercase tracking-wider bg-[#FAF8F2] text-[#946B19] border border-[#E8E1D2]">
+                <div className="space-y-2 sm:space-y-2.5">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-xs sm:text-[13px] font-semibold uppercase tracking-wider bg-[#FAF8F2] text-[#946B19] border border-[#E8E1D2]">
                       {isPlanner && <IconBriefcase className="w-3.5 h-3.5 text-[#B88A2E]" />}
                       {isPerformer && <IconMic className="w-3.5 h-3.5 text-[#B88A2E]" />}
                       {isCrew && <IconWrench className="w-3.5 h-3.5 text-[#B88A2E]" />}
                       {req.category}
                     </span>
 
-                    <span className="text-[12px] sm:text-[12.5px] font-medium text-[#686868]">
+                    <span className="text-[11px] sm:text-[12.5px] font-medium text-[#686868] shrink-0">
                       {new Date(req.createdAt).toLocaleDateString()}
                     </span>
                   </div>
 
-                  <h3 className="text-[18.5px] sm:text-[19px] font-semibold text-[#242424] leading-snug">
+                  <h3 className="text-base sm:text-[18.5px] font-semibold text-[#242424] leading-snug">
                     {req.eventName}
                   </h3>
 
-                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[14px] sm:text-[14.5px] text-[#686868]">
+                  <div className="flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-1 text-xs sm:text-[14.5px] text-[#686868]">
                     <span className="flex items-center gap-1.5">
-                      <IconCalendar className="w-4 h-4 text-[#B88A2E]" />
+                      <IconCalendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#B88A2E] shrink-0" />
                       {new Date(req.startDate).toLocaleDateString()}
                     </span>
                     <span className="flex items-center gap-1.5">
-                      <IconMapPin className="w-4 h-4 text-[#B88A2E]" />
-                      {req.location}
+                      <IconMapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#B88A2E] shrink-0" />
+                      <span className="truncate max-w-[200px] sm:max-w-none">{req.location}</span>
                     </span>
                   </div>
 
                   {/* Highlights */}
                   {req.categoryDetails && (
-                    <div className="pt-1.5 flex flex-wrap gap-1.5">
+                    <div className="pt-1 flex flex-wrap gap-1 sm:gap-1.5">
                       {isPlanner &&
                         req.categoryDetails.plannerServices?.slice(0, 3).map((s) => (
                           <span
                             key={s}
-                            className="px-2.5 py-1 rounded-md text-[13px] sm:text-[13.5px] font-medium bg-[#FAF8F2] border border-[#E8E1D2] text-[#242424]"
+                            className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md text-xs sm:text-[13px] font-medium bg-[#FAF8F2] border border-[#E8E1D2] text-[#242424]"
                           >
                             {s}
                           </span>
@@ -209,7 +209,7 @@ export default function RequirementsList({ onNewPostingClick }) {
                         req.categoryDetails.performerType?.slice(0, 3).map((t) => (
                           <span
                             key={t}
-                            className="px-2.5 py-1 rounded-md text-[13px] sm:text-[13.5px] font-medium bg-[#FAF8F2] border border-[#E8E1D2] text-[#242424]"
+                            className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md text-xs sm:text-[13px] font-medium bg-[#FAF8F2] border border-[#E8E1D2] text-[#242424]"
                           >
                             {t}
                           </span>
@@ -218,7 +218,7 @@ export default function RequirementsList({ onNewPostingClick }) {
                         req.categoryDetails.crewRoles?.slice(0, 3).map((r) => (
                           <span
                             key={r}
-                            className="px-2.5 py-1 rounded-md text-[13px] sm:text-[13.5px] font-medium bg-[#FAF8F2] border border-[#E8E1D2] text-[#242424]"
+                            className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md text-xs sm:text-[13px] font-medium bg-[#FAF8F2] border border-[#E8E1D2] text-[#242424]"
                           >
                             {r}
                           </span>
@@ -227,17 +227,17 @@ export default function RequirementsList({ onNewPostingClick }) {
                   )}
                 </div>
 
-                <div className="pt-3 border-t border-[#E8E1D2] flex items-center justify-between text-[14px] sm:text-[14.5px]">
+                <div className="pt-3 border-t border-[#E8E1D2] flex flex-wrap items-center justify-between gap-2 text-xs sm:text-[14.5px]">
                   <div>
                     <span className="text-[#686868]">Budget: </span>
                     <span className="font-bold text-[#946B19]">
                       {req.currency === "USD" ? "$" : "₹"}
                       {Number(req.budget).toLocaleString()}
                     </span>
-                    <span className="text-[#686868] text-[13.5px] sm:text-[14px]"> ({req.budgetType})</span>
+                    <span className="text-[#686868] text-[11px] sm:text-[13.5px]"> ({req.budgetType})</span>
                   </div>
 
-                  <span className="text-[#686868] font-medium text-[14px]">
+                  <span className="text-[#686868] font-medium text-xs sm:text-[14px]">
                     {req.quantity} needed
                   </span>
                 </div>

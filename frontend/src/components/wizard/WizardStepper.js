@@ -32,19 +32,19 @@ export default function WizardStepper({ currentStep, onStepClick, maxStepReached
   return (
     <nav
       aria-label="Requirement wizard progress"
-      className="w-full bg-white border border-[#E8E1D2] rounded-2xl p-5 sm:py-6 sm:px-6 shadow-xs"
+      className="w-full bg-white border border-[#E8E1D2] rounded-2xl p-4 sm:p-5 md:py-6 md:px-6 shadow-xs"
     >
-      {/* Mobile Stepper View */}
+      {/* Mobile Stepper View (< 768px) */}
       <div className="md:hidden">
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-[13px] font-semibold tracking-wider text-[#946B19] uppercase">
+        <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+          <span className="text-xs sm:text-[13px] font-semibold tracking-wider text-[#946B19] uppercase">
             Step {currentStep} of {WIZARD_STEPS.length}
           </span>
-          <span className="text-[13.5px] font-medium text-[#686868]">
+          <span className="text-xs sm:text-[13.5px] font-medium text-[#686868]">
             {Math.round(progressPercent)}% completed
           </span>
         </div>
-        <h2 className="text-lg font-bold text-[#242424] mb-3">
+        <h2 className="text-base sm:text-lg font-bold text-[#242424] mb-2.5 sm:mb-3">
           {WIZARD_STEPS[currentStep - 1].title}
         </h2>
         <div className="w-full bg-[#FAF8F2] border border-[#E8E1D2] h-2 rounded-full overflow-hidden">
@@ -55,9 +55,9 @@ export default function WizardStepper({ currentStep, onStepClick, maxStepReached
         </div>
       </div>
 
-      {/* Desktop Stepper View */}
+      {/* Tablet & Desktop Stepper View (>= 768px) */}
       <div className="hidden md:block">
-        <ol className="grid grid-cols-4 gap-3.5 relative">
+        <ol className="grid grid-cols-4 gap-2 lg:gap-3.5 relative">
           {WIZARD_STEPS.map((step) => {
             const isCompleted = step.id < currentStep;
             const isCurrent = step.id === currentStep;
@@ -70,7 +70,7 @@ export default function WizardStepper({ currentStep, onStepClick, maxStepReached
                   onClick={() => isClickable && onStepClick(step.id)}
                   disabled={!isClickable}
                   aria-current={isCurrent ? "step" : undefined}
-                  className={`w-full text-left transition-all duration-150 rounded-xl p-3 sm:py-3.5 sm:px-3.5 flex items-start gap-3.5 border ${
+                  className={`w-full text-left transition-all duration-150 rounded-xl p-2 sm:p-2.5 lg:p-3.5 flex items-start gap-2.5 lg:gap-3.5 border ${
                     isCurrent
                       ? "bg-[#FAF8F2] border-[#B88A2E] ring-1 ring-[#B88A2E]"
                       : isCompleted
@@ -81,7 +81,7 @@ export default function WizardStepper({ currentStep, onStepClick, maxStepReached
                   }`}
                 >
                   <div
-                    className={`flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center font-semibold text-[15.5px] transition-colors ${
+                    className={`shrink-0 w-8 h-8 lg:w-10 lg:h-10 rounded-xl flex items-center justify-center font-semibold text-xs sm:text-sm lg:text-[15.5px] transition-colors ${
                       isCurrent
                         ? "bg-[#B88A2E] text-white shadow-xs"
                         : isCompleted
@@ -89,12 +89,12 @@ export default function WizardStepper({ currentStep, onStepClick, maxStepReached
                         : "bg-white text-[#686868] border border-[#E8E1D2]"
                     }`}
                   >
-                    {isCompleted ? <IconCheck className="w-4 h-4 text-[#946B19]" /> : step.id}
+                    {isCompleted ? <IconCheck className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-[#946B19]" /> : step.id}
                   </div>
 
                   <div className="min-w-0 flex-1">
                     <p
-                      className={`text-[13px] font-semibold uppercase tracking-wider ${
+                      className={`text-[11px] lg:text-[13px] font-semibold uppercase tracking-wider ${
                         isCurrent
                           ? "text-[#946B19]"
                           : isCompleted
@@ -105,7 +105,7 @@ export default function WizardStepper({ currentStep, onStepClick, maxStepReached
                       Step 0{step.id}
                     </p>
                     <p
-                      className={`text-[16px] sm:text-[16.5px] font-semibold leading-snug ${
+                      className={`text-[13px] lg:text-[15.5px] xl:text-[16.5px] font-semibold leading-snug truncate ${
                         isCurrent
                           ? "text-[#242424]"
                           : "text-[#242424]"
@@ -113,7 +113,7 @@ export default function WizardStepper({ currentStep, onStepClick, maxStepReached
                     >
                       {step.title}
                     </p>
-                    <p className="text-[13.5px] sm:text-[14px] text-[#686868] mt-0.5 leading-snug">
+                    <p className="text-[11.5px] lg:text-[13px] xl:text-[14px] text-[#686868] mt-0.5 leading-snug line-clamp-1 xl:line-clamp-none">
                       {step.description}
                     </p>
                   </div>
@@ -124,7 +124,7 @@ export default function WizardStepper({ currentStep, onStepClick, maxStepReached
         </ol>
 
         {/* Global Progress Line Bar */}
-        <div className="mt-4 sm:mt-5 px-1">
+        <div className="mt-3.5 lg:mt-5 px-1">
           <div className="w-full bg-[#FAF8F2] border border-[#E8E1D2] h-1.5 rounded-full overflow-hidden">
             <div
               className="bg-[#B88A2E] h-full rounded-full transition-all duration-300 ease-out"
