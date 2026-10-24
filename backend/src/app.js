@@ -19,12 +19,12 @@ const isOriginAllowed = (origin) => {
   if (!origin) return true;
   const normalized = origin.replace(/\/$/, "");
 
-  // Match explicitly allowed list or wildcard
-  if (config.allowedOrigins.includes("*") || config.allowedOrigins.includes(normalized)) {
+  // 1. Exact match against configured allowed origins (config/index.js)
+  if (config.allowedOrigins.includes(normalized)) {
     return true;
   }
 
-  // Allow all Vercel deployment, branch, and preview URLs (*.vercel.app)
+  // 2. Allow Vercel deployment and preview URLs (*.vercel.app)
   if (/^https:\/\/([a-zA-Z0-9-]+\.)*vercel\.app$/.test(normalized)) {
     return true;
   }
